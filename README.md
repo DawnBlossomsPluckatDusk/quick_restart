@@ -3,6 +3,7 @@
 主要用于重装系统后的快速回复工作环境，安装常用软件
 
 ## 项目结构
+```
 
 ├─config                            配置文件，保存下载的`url`和`xpath`
 │      DownloadLists.txt            `exe`文件的`url`，`install_simple.py`使用
@@ -20,7 +21,7 @@
 |      spider_selenium.py           爬虫版本，通过使用`selenium`模拟点击实现
 ├─README.back.md                    旧文档
 └─README.md                         用户手册
-
+```
 
 ## 快速使用
 
