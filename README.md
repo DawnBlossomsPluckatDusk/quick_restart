@@ -1,35 +1,60 @@
-### 快速开始
+# quick_restart
 
-### 原因
+主要用于重装系统后的快速回复工作环境，安装常用软件
 
-由于自己经常重装或者格式化操作系统，希望使用一些简单的脚本来快速还原一些基本的软件，现有的chocolate个人觉得比较麻烦，就做了一个简易版本的脚本，有待改进
+## 项目结构
 
-### 目录结构
-installers          --- 安装包使用的目录
-src                 --- 源代码
-DownloadLists.txt   --- 安装包的URL
+├─config                            配置文件，保存下载的`url`和`xpath`
+│      DownloadLists.txt            `exe`文件的`url`，`install_simple.py`使用
+│      DownloadUrls.txt             软件的下载`url`，`spider_selenium.py`使用
+│      DownloadXpath.txt            软件的下载元素的`xpath`，`spider_selenium.py`使用
+│      
+├─driver                            浏览器驱动，需要根据使用的浏览器进行更改，默认使用`edge`
+│      chromedriver.exe
+│      msedgedriver.exe
+│
+├─installers                        存放安装包的临时文件，安装完成后会清理安装包
+├─src                               源代码
+|      demo.py                      测试功能代码
+|      install_simple.py            简易版，需要获取`exe`的`url`，一些软件的下载并不支持
+|      spider_selenium.py           爬虫版本，通过使用`selenium`模拟点击实现
+├─README.back.md                    旧文档
+└─README.md                         用户手册
 
-### 功能列表
 
-- [ ] 安装包下载  ---使用wget下载
+## 快速使用
 
-- [ ] 软件自动安装
+1. 下载使用浏览器的`driver`，并移动到`driver`目录
+2. 在`config`文件夹下的`DownloadUrls.txt`中添加需要的软件的下载界面`url` **该页面需要存在可以直接点击下载的元素，不支持再次跳转到另一个页面**
+3. 在`config`文件夹下的`Downloadxpath.txt`中添加下载元素的`xpath`   **确保`xpath`和`url`是一一对应的**
+4. 修改`spider_selenium.py`文件
+   + 修改`driver`变量
+5. 使用管理员权限运行
 
-- [ ] 软件安装包的删除
+## 代码逻辑
 
-### 默认下载软件列表
-1. 钉钉
-2. TIM
-3. 微信
-4. Git
-5. typora
-6. 飞书
-7. QQ音乐
-8. steam
-9. vscode
+`install_simple`逻辑简单，使用`wget`命令进行下载，使用`subprocess`模块进行安装
 
-### 缺点
+`spider_selenium`使用`selenium`模拟浏览器操作，进行软件的自动下载
 
-1. 现阶段需要收集安装包的网址
-2. 需要提供python环境，不一定存在
-3. 现阶段安装阶段仍需要手动操作
+`pipeline`:
+
+1. 获取软件的`url`和下载元素的`xpath`
+2. 使用`selenium`模拟浏览器打开`url`
+3. 模拟浏览器根据`xpath`寻找下载元素
+4. 模拟浏览器点击下载元素
+5. 结束下载，将下载文件移动到`installers`
+6. 安装
+7. 清理安装包
+
+**所有操作都要在管理员权限下进行**
+
+## 问题合集
+
+记录使用中的问题
+
+
+## TODO
+
+- [ ]    软件的自动安装
+- [ ]    环境的集成，提供需要的环境

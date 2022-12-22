@@ -9,7 +9,7 @@ if __name__ == '__main__':
     # 1. 获取下载列表
     filesURL = []
     filesName = []
-    with open("./DownloadLists.txt") as f:
+    with open("./config/DownloadLists.txt") as f:
         text = f.readline().replace("\n","")
         while text:
             filesURL.append(text)
