@@ -2,9 +2,15 @@ import os
 import time
 import subprocess
 from selenium import webdriver
-
+from msedge.selenium_tools import EdgeOptions,Edge
+import logging
 
 if __name__ == '__main__':
+
+    # 屏蔽selenium的错误信息
+    options = EdgeOptions()
+    options.add_experimental_option("excludeSwitches", ['enable-automation', 'enable-logging'])
+    
 
     # 根据不同的edge版本更换driver
     driver = "./driver/msedgedriver.exe"
@@ -27,7 +33,7 @@ if __name__ == '__main__':
     for url,xpath in urls.items():
 
         # 初始化浏览器
-        browser = webdriver.Edge(driver)
+        browser = Edge(driver,options=options)
 
         # 模拟浏览器进行网页的打开和点击模拟
         browser.get(url)
