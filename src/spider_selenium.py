@@ -1,17 +1,12 @@
-import os
-import time
-import subprocess
+import os,time,subprocess,requests,re
 from selenium import webdriver
 from msedge.selenium_tools import EdgeOptions,Edge
-import logging
+
+from webdriver_manager.core.utils import get_browser_version_from_os
+from webdriver_manager.microsoft import EdgeChromiumDriverManager
 
 if __name__ == '__main__':
-
-    # 屏蔽selenium的错误信息
-    options = EdgeOptions()
-    options.add_experimental_option("excludeSwitches", ['enable-automation', 'enable-logging'])
     
-
     # 根据不同的edge版本更换driver
     driver = "./driver/msedgedriver.exe"
     DownloadDir = ""
@@ -33,7 +28,7 @@ if __name__ == '__main__':
     for url,xpath in urls.items():
 
         # 初始化浏览器
-        browser = Edge(driver,options=options)
+        browser = Edge(driver)
 
         # 模拟浏览器进行网页的打开和点击模拟
         browser.get(url)
@@ -71,4 +66,6 @@ if __name__ == '__main__':
     # 清理安装包
     for file in os.listdir(installers):
         if file.endswith(".exe") or file.endswith(".msi") or file.endswith(".EXE"):
-            os.remove(installers+"/"+file) 
+            os.remove(installers+"/"+file)
+
+    
