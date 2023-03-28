@@ -1,0 +1,9 @@
+https://dtapp-pub.dingtalk.com/dingtalk-desktop/win_downloader/dingtalk_downloader.exe
+https://dldir1.qq.com/qqfile/qq/TIM3.4.3/TIM3.4.3.22064.exe
+https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
+https://github.com/git-for-windows/git/releases/download/v2.38.1.windows.1/PortableGit-2.38.1-64-bit.7z.exe
+https://typora.io/windows/typora-setup-x64.exe
+https://sf3-cn.feishucdn.com/obj/ee-appcenter/82e203a8/Feishu-win32_ia32-5.26.6-signed.exe
+https://dldir1.qq.com/music/clntupate/QQMusicSetup.exe
+https://cdn.cloudflare.steamstatic.com/client/installer/SteamSetup.exe
+https://az764295.vo.msecnd.net/stable/5235c6bb189b60b01b1f49062f4ffa42384f8c91/VSCodeUserSetup-x64-1.74.0.exe
